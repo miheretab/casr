@@ -17,9 +17,14 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
         'password',
+        'phone',
+        'profile_uri',
+        'last_password_reset',
+        'status',
     ];
 
     /**
@@ -29,7 +34,6 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
     /**
@@ -38,6 +42,14 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'last_password_reset' => 'datetime',
     ];
+
+    /**
+     * Get the client associated.
+     */
+    public function client()
+    {
+        return $this->hasOne('App\Client');
+    }
 }
