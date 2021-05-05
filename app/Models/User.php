@@ -25,6 +25,7 @@ class User extends Authenticatable
         'profile_uri',
         'last_password_reset',
         'status',
+        'client_id'
     ];
 
     /**

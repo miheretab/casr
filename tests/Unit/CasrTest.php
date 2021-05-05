@@ -12,7 +12,7 @@ class CasrTest extends TestCase
      *
      * @return void
      */
-    public function test_decode_lat_long()
+    public function test_address()
     {
         $addressInput = [
             'address1' => 'Rock Heven Way',
@@ -22,8 +22,8 @@ class CasrTest extends TestCase
             'country' => 'USA',
             'zip' => 20166,
         ];
-        $latLong = AddressHelper::decodeLatLong($addressInput);
-        $this->assertTrue(isset($latLong['latitude']));
+        $addressString = AddressHelper::makeAddress($addressInput);
+        $this->assertEquals($addressString, 'Rock Heven Way #125, Sterling, VA 20166, USA');
     }
 
 }
